@@ -1,0 +1,62 @@
+int reloj=2;
+int salida1=6;
+int salida2=8;
+int salida3=10;
+int c=0;
+void setup() {
+pinMode(salida1,OUTPUT);
+pinMode(salida2,OUTPUT);
+pinMode(salida3,OUTPUT);
+pinMode(reloj,INPUT);
+attachInterrupt(digitalPinToInterrupt(reloj),CONTADOR,FALLING);
+}
+
+void CONTADOR(){
+c++;
+}
+
+void loop() {
+  if(c==0){
+    digitalWrite(salida1,LOW);
+    digitalWrite(salida2,LOW);
+    digitalWrite(salida3,LOW);
+  }
+  if (c==1){
+    digitalWrite(salida1,HIGH);
+    digitalWrite(salida2,LOW);
+    digitalWrite(salida3,LOW);
+  }
+  if (c==2){
+    digitalWrite(salida2,HIGH);
+    digitalWrite(salida1,LOW);
+    digitalWrite(salida3,LOW);
+  }
+  if (c==3){
+    digitalWrite(salida1,HIGH);
+    digitalWrite(salida2,HIGH);
+    digitalWrite(salida3,LOW);
+  }
+  if (c==4){
+    digitalWrite(salida3,HIGH);
+    digitalWrite(salida2,LOW);
+    digitalWrite(salida1,LOW);
+  }
+  if (c==5){
+    digitalWrite(salida3,HIGH);
+    digitalWrite(salida1,HIGH);
+    digitalWrite(salida2,LOW);
+  }
+  if (c==6){
+    digitalWrite(salida3,HIGH);
+    digitalWrite(salida2,HIGH);
+    digitalWrite(salida1,LOW);
+  }
+  if (c==7){
+    digitalWrite(salida3,HIGH);
+    digitalWrite(salida2,HIGH);
+    digitalWrite(salida1,HIGH);
+  }
+  if(c==8){
+    c=0;
+  }
+}
